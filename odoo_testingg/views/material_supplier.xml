@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        <!-- View untuk Supplier -->
+        <record model="ir.ui.view" id="supplier_form_view">
+            <field name="name">Supplier Form View</field>
+            <field name="model">supplier</field>
+            <field name="arch" type="xml">
+                <form string="Supplier Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Materials">
+                                <field name="material_ids">
+                                    <tree string="Materials">
+                                        <field name="code"/>
+                                        <field name="name"/>
+                                        <field name="type"/>
+                                        <field name="buy_price"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- View untuk Material -->
+        <record model="ir.ui.view" id="material_form_view">
+            <field name="name">Material Form View</field>
+            <field name="model">material</field>
+            <field name="arch" type="xml">
+                <form string="Material Form">
+                    <sheet>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="buy_price"/>
+                            <field name="supplier_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- View untuk Material List -->
+        <record model="ir.ui.view" id="material_tree_view">
+            <field name="name">Material Tree View</field>
+            <field name="model">material</field>
+            <field name="arch" type="xml">
+                <tree string="Materials">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="buy_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search View untuk Material -->
+        <record model="ir.ui.view" id="material_search_view">
+            <field name="name">Material Search View</field>
+            <field name="model">material</field>
+            <field name="arch" type="xml">
+                <search string="Search Materials">
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action untuk Supplier -->
+        <record model="ir.actions.act_window" id="supplier_action">
+            <field name="name">Supplier Action</field>
+            <field name="res_model">supplier</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action untuk Material -->
+        <record model="ir.actions.act_window" id="material_action">
+            <field name="name">Material Action</field>
+            <field name="res_model">material</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    <menuitem id="main_menu" name="Material Menu"/>
+       <menuitem id="supplier_menu" name="Supplier" parent="main_menu" action="supplier_action" sequence='2'/>
+       <menuitem id="material_menu" name="Material" parent="main_menu" action="material_action" sequence='3'/>
+    </data>
+</odoo>

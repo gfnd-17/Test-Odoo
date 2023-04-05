@@ -1,0 +1,41 @@
+<odoo>
+    <template id="material_form">
+        <form action="/material/store" method="post">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="form-group">
+                <label>Material Code:</label>
+                <input type="text" class="form-control" name="material_code" required="required"/>
+            </div>
+            <div class="form-group">
+                <label>Material Name:</label>
+                <input type="text" class="form-control" name="material_name" required="required"/>
+            </div>
+            <div class="form-group">
+                <label>Material Type:</label>
+                <select class="form-control" name="material_type" required="required">
+                    <option value="">- Pilih Material Type -</option>
+                    <option value="Fabric">Fabric</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Cotton">Cotton</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Material Buy Price:</label>
+                <input type="number" class="form-control" name="material_buy_price" required="required" min="100"/>
+            </div>
+            <div class="form-group">
+                <label>Related Supplier:</label>
+                <select class="form-control" name="related_supplier" required="required">
+                    <option value="">- Pilih Related Supplier -</option>
+                    <t t-foreach="suppliers" t-as="supplier">
+<!--                        <option value="t t-esc='supplier.id'"><t t-esc="supplier.name"/></option>-->
+                    </t>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </template>
+</odoo>
+

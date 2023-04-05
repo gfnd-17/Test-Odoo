@@ -1,0 +1,31 @@
+<odoo>
+    <template id="material_list">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Material Type</th>
+                    <th>Material Buy Price</th>
+                    <th>Related Supplier</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="materials" t-as="material">
+                    <tr>
+                        <td><t t-esc="material.material_code"/></td>
+                        <td><t t-esc="material.material_name"/></td>
+                        <td><t t-esc="material.material_type"/></td>
+                        <td><t t-esc="material.material_buy_price"/></td>
+                        <td><t t-esc="material.related_supplier.name"/></td>
+                        <td>
+                            <a t-att-href="'/material/' + str(material.id) + '/edit'"><i class="fa fa-edit"></i></a>
+                            <a t-att-href="'/material/' + str(material.id) + '/delete'"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+    </template>
+</odoo>
